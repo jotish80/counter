@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        
+        .display{
+            height: 70px;
+            width: 100px;
+            background-color: cyan;
+            text-align: center;
+            padding: 15px 0;
+            border-radius: 15px;
+            margin-left: 580px;
+        }
+        h1{
+            text-align: center;
+            font-size: 30px;
+            color: blue;
+        }
+        .main{
+            margin-left: 580px;
+             
+        }
+        .button-part{
+            margin-top: 50px;
+            margin-left: 500px;;
+          
+        }
+
+        #increase {
+            padding: 10px;
+            margin-right: 10px;
+            background-color: blueviolet;
+            color: white;
+            border-radius: 10px;
+              border: none;
+        }
+        #reset {
+            padding: 10px;
+            margin-right: 10px;
+            background-color: red;
+            color: white;
+             border-radius: 10px;
+               border: none;
+        }
+
+        #decrease {
+            padding: 10px;
+            margin-right: 10px;
+            background-color:green;
+            color: white;
+             border-radius: 10px;
+             border: none;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+         <h1>COUNTER</h1>
+        <div class="display">
+            <h1 id="show-number">1</h1>
+            
+        </div>
+        
+        <div class="button-part">
+            <button id="increase">INCREASE</button>
+            <button id="reset">RESET</button>
+            <button id="decrease">DECREASE</button> 
+        </div>
+    </div>
+
+    <script>
+
+            document.getElementById('increase').addEventListener('click', function(){
+                 let increaseButton =  document.getElementById('show-number');
+                 let currentValue = parseFloat(increaseButton.innerHTML);
+                  let newValue = currentValue + 1;
+                  increaseButton.innerHTML = newValue;    
+            })
+             document.getElementById('decrease').addEventListener('click', function(){
+                 let decreaseButton =  document.getElementById('show-number');
+                 let currentDecrease = parseFloat(decreaseButton.innerHTML);
+                  let newDecrease = currentDecrease - 1;
+                  decreaseButton.innerHTML = newDecrease;
+                  if(decreaseButton.innerHTML < 0){
+                       decreaseButton.innerHTML = 0;
+                  }
+            })
+             document.getElementById('reset').addEventListener('click', function(){
+                 let resetButton =  document.getElementById('show-number');
+                 let currentReset = parseFloat(resetButton.innerHTML);
+                  let newReset = currentReset * 0;
+                  resetButton.innerHTML = newReset;
+                 
+            })
+
+            // from search
+
+        let displayUpdate = document.getElementById('show-number');
+        let increaseButton = document.getElementById('increase');
+        let decreaseButton = document.getElementById('decrease');
+        let resetButton = document.getElementById('reset');
+         
+        let count = 0;
+        
+
+        increaseButton.addEventListener('click', function(){
+            count =  count + 1;
+            updateDisplay()
+        })
+        decreaseButton.addEventListener('click', function(){
+            count = count - 1;
+            if(count < 0){
+               count = 0;
+        }
+            updateDisplay()
+        })
+        resetButton.addEventListener('click', function(){
+            count = 0;
+            updateDisplay()
+        })
+        
+        function updateDisplay() {
+          displayUpdate.innerHTML = count;
+        }
+
+    </script>
+</body>
+</html>
